@@ -105,24 +105,3 @@ L' ID_CONTAINER può essere recuperato tramite il comando
 		
 ## Strumenti di terze parti
 Per facilitare la gestione dei container e velocizzare il modo di interfacciarsi con questi è stato utilizzato un software di terze parti chiamato [*DockStation*](https://dockstation.io/).
-
-#Connessione ai cluster aziendali (da togliere in repo pubblica)
-Per potersi collegare ai cluster aziendali id *Imola Informatica* e testare l'applicazione sulle loro macchine è necessario eseguire i seguenti passi:
-
-1. Aggiungere la riga `nameserver 192.168.188.3` in fondo al file `/etc/resolv.conf`. Questo comando server per aggiungere il puntatore al server pfSense (Firewall) del laboratorio aziendale in quanto il DNS non è automatico.
-**N.B.** : In caso successivamente la connessione non dovesse funzionare, tornare a questo passo e commentare all'interno del file altre eventuali righe con `nameserver xxx.xxx.xxx.xxx` che possono essere presenti.
-
-2. Dall'interno della cartella `pfSense-xen1-UDP4-1194` eseguire il comando
-
-		$ sudo openvpn --script-security 2 --config pfSense-xen1-UDP4-1194.ovpn ;
-Le credenziali richieste sono:
-
-		username: alpha6
-		password: emuoOn2O
-		
-3. Lasciare il terminale aperto ed entrare con ssh (tramite shell o applicazioni come *FileZilla* o *Nautilus*) all'indirizzo `alpha6-rancher-node.imolab.it` con le seguenti credenziali:
-	
-		username: root
-		password: emuoOn2O
-
-4. I servizi dei container sono accessibili da browser con l'indirizzo: `alpha6-rancher-node.imolab.it:PORT`
